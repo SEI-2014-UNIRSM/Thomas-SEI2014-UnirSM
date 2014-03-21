@@ -1,0 +1,17 @@
+/* esercizio fatto da zero perchè non riesco a caricare 
+ la libreria allegata al file, a causa della versione vecchia 
+ di processing*/
+
+void setup() { 
+  size(900, 900); 
+  background(255); 
+  stroke(random(150, 240));
+
+  //disegna rettangoli di forme variabili, con una distanza randomica dal puntatore.
+}
+void draw() {
+  if (mousePressed) { 
+    rect(mouseX+random(-50, 50), mouseY+random(-50, 50), random(10, 50), random(10, 50));
+    stroke(random(150, 240));
+  }
+}
