@@ -1,3 +1,8 @@
+// This code was modified from 10 Print, for school projects
+// by Università di San Marino. Non commercial use.
+
+//restituisce linee di minor spessore in una fascia dello schermo
+
 size(1020, 680);
 noStroke();
 background(0, 0, 255);
