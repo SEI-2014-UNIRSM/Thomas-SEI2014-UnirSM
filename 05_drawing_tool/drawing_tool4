@@ -1,0 +1,22 @@
+// esercizio fatto da zero 
+float ry=0; // rotazione su asse y
+
+void setup() { 
+  size(900, 900, P3D); 
+  background(255); 
+
+  //disegna sfere ruotate in polarità attorno l'asse Y che seguano le coordinate del mouse
+}
+void draw() {
+  if (mousePressed) { 
+
+    rotateY(ry);
+    rotateX(-0.4);
+    //non riesco a far disegnare le sfere attorno le coordinate del mouse
+    translate(pmouseX, pmouseY,0); //sposta lungo coord. mouse
+    strokeWeight(2);
+    sphere(10); //disegna sfera
+    stroke(random(150, 240));
+    ry++;
+  }
+}
