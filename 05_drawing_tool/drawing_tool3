@@ -1,0 +1,22 @@
+// esercizio fatto da zero 
+
+
+void setup() { 
+  size(900, 900,P3D); 
+  background(255); 
+
+//disegna cubi ruotati in 3d che seguano le coordinate del mouse
+}
+void draw() {
+  if (mousePressed) { 
+
+rotateY(1.25);
+rotateX(-0.4);
+//non riesco a far disegnare il cubo esattamente sulle coordinate del mouse
+translate(0,mouseY,mouseX);
+strokeWeight(2);
+box(100);
+
+    stroke(random(150, 240));
+  }
+}
