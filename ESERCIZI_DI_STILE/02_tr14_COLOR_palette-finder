@@ -12,22 +12,22 @@ void draw() {
   background(100);
 
   // disegna quadrato grande che rileva colore
-  rect(mouseX-150, mouseY-150, 300, 300);
+  rect(mouseX-45, mouseY-30, 90, 30);
   fill(mouseX, mouseY, mouseX);
   noStroke();
 
   // disegna quadratino con variante colore 1
-  rect(mouseX-150, mouseY+150, 100, 100);
+  rect(mouseX-45, mouseY, 30, 30);
   fill(mouseX+50, mouseY+50, mouseX+50);
   noStroke();
 
   // disegna quadratino con variante colore 2
-  rect(mouseX-50, mouseY+150, 100, 100);
+  rect(mouseX-15, mouseY, 30, 30);
   fill(mouseX+100, mouseY+100, mouseX+100);
   noStroke();
 
   // disegna quadratino con variante colore 3
-  rect(mouseX+50, mouseY+150, 100, 100);
+  rect(mouseX+15, mouseY, 30, 30);
   fill(mouseX+150, mouseY+150, mouseX+150);
   noStroke();
 }
