@@ -31,7 +31,7 @@
  * r : start pdf recording
  * e : stop pdf recording
  */
- // DRAW TRIANGLES WITH 1 VERTEX FROM THE CENTER, EVERY STROKE HAS A RANDOM COLOR  
+ // DRAW TRIANGLES WITH 1 VERTEX FROM THE CENTER, EVERY STROKE HAS A RANDOM COLOR
  // START TO DRAW WHEN MOUSE IS OVER THE COMPOSITION
 
 import processing.pdf.*;
@@ -108,14 +108,17 @@ void draw(){
       angle = getRandomAngle(direction);
       float distance = dist(posX, posY, posXcross, posYcross);
       if (distance >= minLength) {
+        fill(0,0,100); // riempimento triangoli
         strokeWeight(0.1); //modificato spessore, cambia totalmente il disegno
-        stroke(random(0,255),random(0,255),random(0,255)); // cambiato riempimento > random
-        triangle(posX, posY, posXcross, posYcross,300,300); // modificata linea in trinagolo, con un vertice che rimane al centro, così si crea un disegno radiale che sovrascrive triangoli
-      }
+        stroke(random(0,255),random(0,255),random(0,255)); // cambiato colore > random
+        triangle(posX, posY, posXcross, posYcross,mouseX,mouseY); // modificata linea in trinagolo, con un vertice sulle coordinate mouse, così si crea un disegno radiale che sovrascrive triangoli
+      
+    }
       posXcross = posX;
       posYcross = posY;
     }
   }
+  
 }
 
 
@@ -170,7 +173,3 @@ String timestamp() {
   Calendar now = Calendar.getInstance();
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
-
-
-
-
