@@ -13,10 +13,10 @@ void draw() {
 rotateY(1.25);
 rotateX(-0.4);
 //non riesco a far disegnare il cubo esattamente sulle coordinate del mouse
-translate(0,mouseY,mouseX);
+translate(0,pmouseY, pmouseX);
 strokeWeight(2);
 box(100);
 
-    stroke(random(150, 240));
+    fill(random(255));
   }
 }
