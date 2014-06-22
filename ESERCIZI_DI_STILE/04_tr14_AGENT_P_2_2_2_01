@@ -31,7 +31,7 @@
  * r : start pdf recording
  * e : stop pdf recording
  */
- // DRAW TRIANGLES WITH 1 VERTEX FROM THE CENTER, EVERY STROKE HAS A RANDOM COLOR
+ // DRAW TRIANGLES WITH 1 VERTEX ON THE MOUSE POSITION AND THE OTHERS WITH RANDOM POSITION
  // START TO DRAW WHEN MOUSE IS OVER THE COMPOSITION
 
 import processing.pdf.*;
@@ -73,7 +73,7 @@ void draw(){
     if (!recordPDF) {
       strokeWeight(1);
       stroke(180);
-      point(posX, posY);
+     // point(posX, posY);
     }
 
     // ------ make step ------
@@ -108,9 +108,10 @@ void draw(){
       angle = getRandomAngle(direction);
       float distance = dist(posX, posY, posXcross, posYcross);
       if (distance >= minLength) {
-        fill(0,0,100); // riempimento triangoli
-        strokeWeight(0.1); //modificato spessore, cambia totalmente il disegno
-        stroke(random(0,255),random(0,255),random(0,255)); // cambiato colore > random
+        fill(100,random(100),random(100)); // fill with random aplha
+        //strokeWeight(0.1); 
+        noStroke();
+        //stroke(random(0,255),random(0,255),random(0,255)); // cambiato colore > random
         triangle(posX, posY, posXcross, posYcross,mouseX,mouseY); // modificata linea in trinagolo, con un vertice sulle coordinate mouse, così si crea un disegno radiale che sovrascrive triangoli
       
     }
