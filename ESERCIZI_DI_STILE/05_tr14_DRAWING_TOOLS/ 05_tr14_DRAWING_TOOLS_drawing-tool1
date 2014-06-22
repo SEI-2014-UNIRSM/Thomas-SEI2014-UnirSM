@@ -1,21 +1,46 @@
-/* esercizio fatto da zero perchè non riesco a caricare
- la libreria allegata al file, a causa della versione vecchia
- di processing*/
+// Algorithm created by Thomas Righi for the course SEI2014 @ UnirSM 
+// Made for educational purposes, MIT License, April 2014, San Marino
 
+
+
+//declare class Ball
+Ball myBall;
 void setup() {
+  myBall = new Ball();
   size(900, 900);
   background(255);
   noStroke();
   smooth();
 }
 
-/*disegna ellissi di forme variabili, in scala di rossi.
- */
+// when mouse is pressed, draw circles with circular movement around the cursor 
 void draw() {
-  if (mousePressed) {
 
-    ellipse(mouseX, mouseY, random(10, 50), random(10, 50));
-    fill(random(0, 255), 0, 0);
+  if (mousePressed) {
+    myBall.display();
+    }
+  if (keyPressed){
+  if (key == 'd' || key == 'D') background(255);
+}
+}
+
+class Ball {
+
+  // GLOBAL VARIABLES
+
+  float speed=0;
+  float inc = TWO_PI/25;
+
+  // CONSTRUCTOR
+  Ball() {
+  }
+
+  //FUNCTIONS
+  void display() {
+    fill(0);
+    ellipse(mouseX+sin(speed)*40, mouseY+cos(speed)*40, 10, 10);
+    speed+=inc;
   }
 }
+
 
