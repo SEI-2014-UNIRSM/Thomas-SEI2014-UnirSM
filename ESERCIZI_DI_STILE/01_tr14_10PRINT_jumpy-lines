@@ -1,0 +1,41 @@
+// Based on: 10 PRINT CHR$(205.5+RND(1)); : GOTO 10
+//
+// Algorithm modified by Thomas Righi for the course SEI2014 @ UnirSM 
+// Made for educational purposes, MIT License, April 2014, San Marino
+
+// drawing some jumpy lines from left to right, with different color strokes and lenght
+int w = 16;
+int h = 16;
+int index = 0;
+int y1=0; 
+int y2=384;
+void setup() {
+size(640, 384);
+background(0);
+strokeWeight(2);
+
+smooth();
+
+
+}
+void draw() {
+  filter(BLUR, 1); // blur filter  
+int x1 = w*index;
+int x2 = x1 + w;
+
+// the points of the lines start with random distance from the top and the bottom of the composition 
+stroke(random(100,255),random(255),random(255));
+if (random(2) < 1) {
+line(x2+random(-50,50), y1+random(50,150), x1+random(-50,50), y2-random(50,150));
+} else {
+line(x1+random(-50,50), y1+random(50,150), x2+random(-50,50), y2-random(50,150));
+}
+index++;
+if (index == width/w) {
+PImage p = get(0, 0, width, 0);
+
+set(0, 0, p);
+index = 0;
+}
+}
+
