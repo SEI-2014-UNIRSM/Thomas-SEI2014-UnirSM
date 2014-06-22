@@ -19,23 +19,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-////CREATE DIFFERENT PATTERNS WITH STROKEWEIGHT AMOUNT AND COLORS
+////CREATE DIFFERENT GRID PATTERNS WITH STROKEWEIGHT AMOUNT AND COLORS BASED ON THE MOUSE POSITION
 
-/**
- * changing strokeweight and strokecaps on diagonals in a grid
- *
- * MOUSE
- * position x : left diagonal strokeweight
- * position y : right diagonal strokeweight
- * left click : new random layout
- *
- * KEYS
- * 1 : round strokecap
- * 2 : square strokecap
- * 3 : project strokecap
- * s : save png
- * p : save pdf
- */
+
 
 import processing.pdf.*;
 boolean savePDF = false;
@@ -48,14 +34,14 @@ int actStrokeCap = ROUND;
 
 void setup() {
   size(600, 600);
-  colorMode(HSB); //impostato nuovo metodo colore
+  colorMode(HSB); //new color mode, it was RGB
 }
 
 
 void draw() {
   if (savePDF) beginRecord(PDF, timestamp()+".pdf");
 
-  background(mouseX,mouseY,200); // background varia con la posizione del mouse
+  background(mouseX,mouseY,255); // hue and saturation modified by the mouse position
   smooth();
   noFill();
   strokeCap(actStrokeCap);
@@ -71,12 +57,15 @@ void draw() {
       int toggle = (int) random(0,2);
 
       if (toggle == 0) {
-        strokeWeight(mouseX/40); //ridotto lo spessore del tratto
-        rect(posX, posY, posX+width/tileCount, posY+height/tileCount); // impostato rettangolo al posto della linea
+        strokeWeight(mouseX/20); 
+        fill(random(mouseX),random(mouseY),random(255));
+        rect(posX, posY, posX+width/tileCount, posY+height/tileCount); // rectangle instead of line
       }
       if (toggle == 1) {
-        strokeWeight(mouseY/10); //aumentato lo spessore del tratto per diversificarlo dal precedente
-        line(posX, posY+width/tileCount, posX+height/tileCount, posY);
+        strokeWeight(mouseY/20); 
+        //line(posX, posY+width/tileCount, posX+height/tileCount, posY);
+        rect(posX, posY, posX+width/tileCount, posY+height/tileCount); // rectangle instead of line
+
       }
     }
   }
@@ -96,15 +85,7 @@ void keyReleased(){
   if (key == 's' || key == 'S') saveFrame(timestamp()+"_##.png");
   if (key == 'p' || key == 'P') savePDF = true;
 
-  if (key == '1'){
-    actStrokeCap = ROUND;
-  }
-  if (key == '2'){
-    actStrokeCap = SQUARE;
-  }
-  if (key == '3'){
-    actStrokeCap = PROJECT;
-  }
+ 
 }
 
 
@@ -114,7 +95,4 @@ String timestamp() {
   Calendar now = Calendar.getInstance();
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
-
-
-
 
